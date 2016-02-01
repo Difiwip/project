@@ -7,3 +7,6 @@ se puede hacer asi:
 <input name="MiArray[]" />
 
 llenar con nombre y telefono y con un boton mostrar lo cargado
+
+LEER: 
+http://php.net/manual/es/faq.html.php#faq.html.arrays
