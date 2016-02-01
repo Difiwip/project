@@ -1,0 +1,9 @@
+1- Formulario que Llene un ARRAY de datos.
+se puede hacer asi:
+
+<input name="MiArray[]" />
+<input name="MiArray[]" />
+<input name="MiArray[]" />
+<input name="MiArray[]" />
+
+llenar con nombre y telefono y con un boton mostrar lo cargado
