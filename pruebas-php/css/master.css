@@ -1,0 +1,28 @@
+body{
+  margin: 0;
+  background-color: #7FF1CF;
+}
+#navegacion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+.letra-grande{
+  font-size: 3em;
+}
+.centrar{
+  text-align: center;
+}
+.bordes{
+  height: 70px;
+  margin: 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 2em;
+}
+.boton{
+  width: 200px;
+  height: 70px;
+  font-size: 2em;
+}
