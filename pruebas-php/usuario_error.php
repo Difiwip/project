@@ -1,3 +1,3 @@
 <?php
-echo "<br>La persona $nombre no tiene permisos para ver los proyectos"
+echo "Usuario o contraseña incorrecta"
  ?>

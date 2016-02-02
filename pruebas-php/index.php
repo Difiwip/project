@@ -1,25 +1,33 @@
 <?php include("header.php"); ?>
-
-<div id="navegacion" class="">
-  <h1>¿Quien sos?</h1>
-    <form  method="post">
-      <input class="bordes" type="text" name="usuario">
-      <input class="boton" type="submit" name="enviar" value="Enviar">
-    </form>
+<div id="contenedor">
+  <form  method="post">
+    <div id="usuario" class="">
+        <h1 class="centrar titulo">Log in </h1>
+            <input class="bordes" type="text" name="usuario">
+          <div id="pw" class="">
+            <input class="bordes" type="password" name="pw">
+          </div>
+          <div id="submit">
+            <input class="boton" type="submit" name="enviar" value="Submit">
+          </div>
+    </div>
+  </form>
 </div>
-<div class="letra-grande centrar">
+<div class="letra-grande centrar titulo-error">
   <?php
     if(isset($_POST['enviar']))
        {
           $nombre = $_POST['usuario'];
-          if ($nombre != "nico") {
-            include("usuario_error.php");
+          $pw = $_POST['pw'];
+
+          if($nombre == "nico" and $pw == "nicolas")
+          {
+            header('Location: proyectos.php');
           }
           else {
-            header('Location: proyectos.php');
+            include("usuario_error.php");
           }
        }
     ?>
 </div>
-
 <?php include("footer.php"); ?>

@@ -1,0 +1,57 @@
+body{
+  margin: 0;
+  background-color: #7FF1CF;
+}
+#contenedor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  flex-wrap: nowrap;
+
+}
+#usuario form{
+  margin: 0;
+  height: 150px;
+}
+#submit{
+  height: 50px;
+}
+.centrar{
+  text-align: center;
+}
+.bordes{
+  height: 70px;
+  margin: 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 2em;
+}
+.boton{
+  width: 200px;
+  height: 70px;
+  font-size: 2em;
+  text-align: center;
+  margin-left: 25%;
+
+}
+.titulo{
+  font-family: 'Droid Serif', serif;
+  font-size: 5em;
+  margin: 0;
+  color: #FF7376;
+}
+.titulo-error{
+  font-family: 'Droid Serif', serif;
+  font-size: 3.4em;
+  margin: 20px;
+  color: #FF7376;
+}
+input[type=submit] {
+    padding:5px 15px;
+    background:#FF7376;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
