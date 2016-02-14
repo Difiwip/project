@@ -2,6 +2,9 @@ body{
   margin: 0;
   background-color: #7FF1CF;
 }
+#contenedor{
+  display: flex;
+}
 #prueba1{
   background-color: red;
 }
@@ -10,4 +13,10 @@ body{
 }
 #prueba3{
   background-color: green;
+}
+.medidas{
+  width: 25%;
+  height: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
 }
