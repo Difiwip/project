@@ -5,6 +5,8 @@ var slides_to_create = 15 / 4; // Cantidad de slides a crear
 
 var slides_created;
 
+
+
 // Function
 // create_slide_container()
 // @params slides_to_create, que son la cantidad de elementos que debe crear
@@ -126,3 +128,8 @@ function desactivate_slide(slide_to_desactivate) {
           }
         }
     })
+
+
+    $(window).on("load", function() {
+      $('#pre_loader').hide();
+    });
