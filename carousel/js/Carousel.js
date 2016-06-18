@@ -76,10 +76,10 @@ function desactivate_slide(slide_to_desactivate) {
   activate_slide($('#slide_number_0'))
 
 //Cuando  haga click en next
-  $('#next').on('click',function(){
+  $('#s-slider-next').on('click',function(){
 
 //Obtengo todos los hijos del carousel(sliders) en un array.
-    var carousel_father = $('.gal').children();
+    var carousel_father = $('.s-slider').children();
 
 //Entro en un loop de este mismo array
       for (var i = 0; i < carousel_father.length; i++) {
@@ -102,10 +102,10 @@ function desactivate_slide(slide_to_desactivate) {
   })
 
   //Cuando  haga click en prev
-    $('#prev').on('click',function(){
+    $('#s-slider-prev').on('click',function(){
 
   //Obtengo todos los hijos del carousel(sliders) en un array.
-      var carousel_father = $('.gal').children();
+      var carousel_father = $('.s-slider').children();
 
   //Entro en un loop de este mismo array
         for (var i = 0; i < carousel_father.length; i++) {
