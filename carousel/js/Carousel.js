@@ -1,20 +1,37 @@
 var images_to_insert = []; // Array to insert images urls
 var appended_items_flag = 1; // Con esta variable controlo los items que voy metiendo para poder resetearlo cuando sean 4
 var container_number_index = 0; // variable que controla el slide en donde cargo la imagen
-var number_of_element;
-var number_of_sliders;
-var number_of_element = 15;
-var slides_to_create = number_of_element / 4; // Cantidad de slides a crear
+var total_img_in_slider;
+var number_of_element = 20;
 
 var slides_created;
 
-//
-// function checkPosition()
-// {
-//     if($(window).width() < 1920 && > 1400){
-//         alert('')
-//     }
-// }
+
+function checkPosition()
+{
+    var window_width = $(window).width();
+
+    if(window_width < 1920 && window_width > 1400 ){
+         total_img_in_slider = 12;
+         return number_of_element / total_img_in_slider; // Cantidad de slides a crear
+    }
+    else if (window_width < 1400 && window_width > 900 ) {
+        total_img_in_slider = 8;
+        return number_of_element / total_img_in_slider; // Cantidad de slides a crear
+    }
+    else if (window_width < 900 && window_width > 700) {
+        total_img_in_slider = 6;
+        return number_of_element / total_img_in_slider; // Cantidad de slides a crear
+    }
+    else if (window_width < 700 && window_width > 500) {
+        total_img_in_slider = 4;
+        return number_of_element / total_img_in_slider; // Cantidad de slides a crear
+    }
+    else if (window_width < 500 && window_width > 0) {
+        total_img_in_slider = 1;
+        return number_of_element / total_img_in_slider; // Cantidad de slides a crear
+    }
+}
 
 
 
@@ -29,6 +46,7 @@ function create_slide_container(slides_to_create) {
     var cont = 0;
 
     while (cont < Math.ceil(slides_to_create)) {
+
         $('#carousel').append('<div class="slide" id="slide_number_'+cont+'"></div>')
         cont++;
     }
@@ -60,10 +78,11 @@ function desactivate_slide(slide_to_desactivate) {
 }
 
 // Invoco a la funcion, pasandole slides_to_create que es igual a 15(Elementos,imagenes) / 4 (Cantidad de imagenes que quiero por div)
+var slides_to_create = checkPosition();
 slides_created = create_slide_container(slides_to_create);
-
+console.log(slides_to_create);
 //Array empty
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < number_of_element; i++) {
     images_to_insert.push('<div><img class="s-slider-img" src="http://lorempixel.com/g/300/600/animals/?v=3'+Math.floor((Math.random() * 500) + 1)+'"></div>')
 }
 //Array full
@@ -71,7 +90,8 @@ for (var i = 0; i < 15; i++) {
 // Un for que entra en el array de imagenes a insertar.
 for (var i = 0; i < images_to_insert.length; i++) {
     // La variable appended_items_flag se encarga de autoincrementarse a medida que coloco una imagen, si es igual a 4 significa que tengo que cambiar de slider.
-    if (appended_items_flag == 4) {
+    console.log(total_img_in_slider);
+    if (appended_items_flag == total_img_in_slider) {
         $('#slide_number_' + container_number_index).append(images_to_insert[i])
         container_number_index++;
         appended_items_flag = 1;
@@ -81,6 +101,7 @@ for (var i = 0; i < images_to_insert.length; i++) {
         $('#slide_number_' + container_number_index).append(images_to_insert[i])
         appended_items_flag++;
     }
+
 }
 
 //Oculto todos los elementos
@@ -103,33 +124,45 @@ $(document).ready(function() {
         if(this.complete) $(this).trigger("load");
     });
 
+
+    function check_ssl(carousel_father){
+
+        var s_sliders_only = []
+
+        for (var i = 0; i < carousel_father.length; i++) {
+            if ($(carousel_father[i]).hasClass('slide')) {
+                s_sliders_only.push(carousel_father[i])
+            }
+        }
+
+        return s_sliders_only
+    }
+
     //Cuando  haga click en next
     $('#s-slider-next').on('click',function(){
 
         //Obtengo todos los hijos del carousel(sliders) en un array.
         var carousel_father = $('.s-slider').children();
+        var s_sliders_only = check_ssl(carousel_father);
 
         //Entro en un loop de este mismo array
-        for (var i = 0; i < carousel_father.length; i++) {
+        for (var i = 0; i < s_sliders_only.length; i++) {
 
-            if ($(carousel_father[i]).hasClass('slide')) {
                 //Si tiene la clase que indica que esta activado, necesito desactivarlo y activar el proximo slide
-                if ($(carousel_father[i]).hasClass('slide_actived')) {
+                if ($(s_sliders_only[i]).hasClass('slide_actived')) {
                     //Desactivo
-                    desactivate_slide($(carousel_father[i]))
+                    desactivate_slide($(s_sliders_only[i]))
                     //Controlo si es el ultimo, en el caso que sea el ultimo el slider que tomo para activar es el nro 0, asi genero el efecto carousel
-                    if (carousel_father.length - 1 == i) {
-                        activate_slide($(carousel_father[0]))
+                    if (s_sliders_only.length - 1 == i) {
+                        activate_slide($(s_sliders_only[0]))
                     }
                     //Si no es el ultimo simplente activo la proxima posicion del div que acabo de desactivar.
                     else {
-                        activate_slide($(carousel_father[i+1]))
+                        activate_slide($(s_sliders_only[i+1]))
                     }
 
                     break;
                 }
-            }
-
 
         }
     })
@@ -139,24 +172,27 @@ $(document).ready(function() {
 
         //Obtengo todos los hijos del carousel(sliders) en un array.
         var carousel_father = $('.s-slider').children();
+        var s_sliders_only = check_ssl(carousel_father);
 
         //Entro en un loop de este mismo array
-        for (var i = 0; i < carousel_father.length; i++) {
-            //Si tiene la clase que indica que esta activado, necesito desactivarlo y activar el proximo slide
-            if ($(carousel_father[i]).hasClass('slide_actived')) {
-                //Desactivo
-                desactivate_slide($(carousel_father[i]))
-                //Controlo si es el primero, en el caso que sea el primero el slider que tomo para activar es el nro 4, asi genero el efecto carousel
-                if (carousel_father[0] == carousel_father[i]) {
-                    activate_slide($(carousel_father[3]))
-                }
-                //Si no es el ultimo simplente activo la anterior posicion del div que acabo de desactivar.
-                // else {
-                activate_slide($(carousel_father[i-1]))
-                // }
+        for (var i = 0; i < s_sliders_only.length; i++) {
 
-                break;
-            }
+            //Si tiene la clase que indica que esta activado, necesito desactivarlo y activar el proximo slide
+                if ($(s_sliders_only[i]).hasClass('slide_actived')) {
+                    //Desactivo
+                    desactivate_slide($(s_sliders_only[i]))
+                    //Controlo si es el primero, en el caso que sea el primero el slider que tomo para activar es el nro 4, asi genero el efecto carousel
+                    if (s_sliders_only[0] == s_sliders_only[i]) {
+                        activate_slide($(s_sliders_only[Math.ceil(slides_to_create)-1]))
+                    }
+                    //Si no es el ultimo simplente activo la anterior posicion del div que acabo de desactivar.
+                    else {
+                    activate_slide($(s_sliders_only[i-1]))
+                    }
+
+                    break;
+                }
+
         }
     })
 
