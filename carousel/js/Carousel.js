@@ -1,9 +1,20 @@
 var images_to_insert = []; // Array to insert images urls
 var appended_items_flag = 1; // Con esta variable controlo los items que voy metiendo para poder resetearlo cuando sean 4
 var container_number_index = 0; // variable que controla el slide en donde cargo la imagen
-var slides_to_create = 15 / 4; // Cantidad de slides a crear
+var number_of_element;
+var number_of_sliders;
+var number_of_element = 15;
+var slides_to_create = number_of_element / 4; // Cantidad de slides a crear
 
 var slides_created;
+
+//
+// function checkPosition()
+// {
+//     if($(window).width() < 1920 && > 1400){
+//         alert('')
+//     }
+// }
 
 
 
@@ -53,7 +64,7 @@ slides_created = create_slide_container(slides_to_create);
 
 //Array empty
 for (var i = 0; i < 15; i++) {
-    images_to_insert.push('<img class="s-slider-img" src="http://lorempixel.com/g/300/600/animals/?v=3'+Math.floor((Math.random() * 500) + 1)+'">')
+    images_to_insert.push('<div><img class="s-slider-img" src="http://lorempixel.com/g/300/600/animals/?v=3'+Math.floor((Math.random() * 500) + 1)+'"></div>')
 }
 //Array full
 
@@ -100,21 +111,26 @@ $(document).ready(function() {
 
         //Entro en un loop de este mismo array
         for (var i = 0; i < carousel_father.length; i++) {
-            //Si tiene la clase que indica que esta activado, necesito desactivarlo y activar el proximo slide
-            if ($(carousel_father[i]).hasClass('slide_actived')) {
-                //Desactivo
-                desactivate_slide($(carousel_father[i]))
-                //Controlo si es el ultimo, en el caso que sea el ultimo el slider que tomo para activar es el nro 0, asi genero el efecto carousel
-                if (carousel_father.length - 1 == i) {
-                    activate_slide($(carousel_father[0]))
-                }
-                //Si no es el ultimo simplente activo la proxima posicion del div que acabo de desactivar.
-                else {
-                    activate_slide($(carousel_father[i+1]))
-                }
 
-                break;
+            if ($(carousel_father[i]).hasClass('slide')) {
+                //Si tiene la clase que indica que esta activado, necesito desactivarlo y activar el proximo slide
+                if ($(carousel_father[i]).hasClass('slide_actived')) {
+                    //Desactivo
+                    desactivate_slide($(carousel_father[i]))
+                    //Controlo si es el ultimo, en el caso que sea el ultimo el slider que tomo para activar es el nro 0, asi genero el efecto carousel
+                    if (carousel_father.length - 1 == i) {
+                        activate_slide($(carousel_father[0]))
+                    }
+                    //Si no es el ultimo simplente activo la proxima posicion del div que acabo de desactivar.
+                    else {
+                        activate_slide($(carousel_father[i+1]))
+                    }
+
+                    break;
+                }
             }
+
+
         }
     })
 
