@@ -5,8 +5,6 @@ var slides_to_create = 15 / 4; // Cantidad de slides a crear
 
 var slides_created;
 
-$('#next_slide').hide(); // Hide next_slide
-
 // Function
 // create_slide_container()
 // @params slides_to_create, que son la cantidad de elementos que debe crear
@@ -102,3 +100,29 @@ function desactivate_slide(slide_to_desactivate) {
         }
       }
   })
+
+  //Cuando  haga click en prev
+    $('#prev').on('click',function(){
+
+  //Obtengo todos los hijos del carousel(sliders) en un array.
+      var carousel_father = $('.gal').children();
+
+  //Entro en un loop de este mismo array
+        for (var i = 0; i < carousel_father.length; i++) {
+  //Si tiene la clase que indica que esta activado, necesito desactivarlo y activar el proximo slide
+          if ($(carousel_father[i]).hasClass('slide_actived')) {
+  //Desactivo
+              desactivate_slide($(carousel_father[i]))
+  //Controlo si es el primero, en el caso que sea el primero el slider que tomo para activar es el nro 4, asi genero el efecto carousel
+              if (carousel_father[0] == carousel_father[i]) {
+                activate_slide($(carousel_father[3]))
+              }
+  //Si no es el ultimo simplente activo la anterior posicion del div que acabo de desactivar.
+              // else {
+                activate_slide($(carousel_father[i-1]))
+              // }
+
+            break;
+          }
+        }
+    })
