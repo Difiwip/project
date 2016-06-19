@@ -10,8 +10,11 @@
     <body>
 
     <script id="template" type="x-tmpl-mustache">
-        <div class="{{theme-primary}}">
+        <div class="{{theme}}">
+            <div class="{{theme}}-primary">
 
+
+            </div>
         </div>
     </script>
 
@@ -19,12 +22,12 @@
 
     <script type="text/javascript">
       var template = $('#template').html(); // id de la template a usar
-      Mustache.parse(template);   // optional, speeds up future uses
-      var rendered = Mustache.render(template, {
-          theme-primary : 'azul'
-          theme: "rojo"}); // Defino variable
-      $('body').html(rendered); // pego lo renderizado en body
 
+      Mustache.parse(template);   // optional, speeds up future uses
+
+      var rendered = Mustache.render(template,{theme: "blue"}); // Defino el valor de la variable
+
+      $('body').html(rendered); // pego lo renderizado en body
     </script>
 
 </html>

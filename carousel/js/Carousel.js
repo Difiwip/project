@@ -91,9 +91,14 @@ function desactivate_slide(slide_to_desactivate) {
 
 $(document).ready(function() {
 
+    function setting(directory_path) {
+        this.directory_path = directory_path;
+    }
+
     var slides_to_create;
-    var category_name = prompt("Que categoria cargo?", "Abrigos");
-    var dir = 'http://localhost/web/project/img/'+category_name+'/';
+    var setting = new setting('Compus');
+
+    var dir = 'http://localhost/web/project/img/'+setting.directory_path+'/';
     var fileextension = ".jpg";
     $.ajax({
         //This will retrieve the contents of the folder if the folder is configured as 'browsable'
