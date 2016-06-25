@@ -37,7 +37,8 @@ $( function() {
 
   var $masonry_grid = $('#masonry_grid').masonry({
     itemSelector: '.grid-item',
-    columnWidth: 200
+      columnWidth: '.grid-sizer',
+      percentPosition: true
   });
 
   $('#load-images').click( function() {
