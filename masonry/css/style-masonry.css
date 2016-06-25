@@ -39,6 +39,7 @@ html,body { height:100%; margin:0;}
     height: 100%;
     top: 0;
     left: 0;
+    display: none;
 }
 
 .masonry-grid-modal span{
@@ -47,7 +48,6 @@ html,body { height:100%; margin:0;}
     float: right;
     margin: 10px;
     cursor: pointer;
-    display: none;
 }
 
 button { font-size: 18px; }
