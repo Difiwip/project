@@ -98,7 +98,7 @@ $(document).ready(function() {
     var slides_to_create;
     var setting = new setting('Vinilos');
 
-    var dir = '/web/web-system/img/'+setting.directory_path+'/';
+    var dir = '/web/project/img/'+setting.directory_path+'/';
     var fileextension = ".jpg";
     $.ajax({
         //This will retrieve the contents of the folder if the folder is configured as 'browsable'

@@ -34,14 +34,14 @@ $.ajax({
 console.log(image_url);
 $( function() {
 
-  var $container = $('#container').masonry({
+  var $masonry_grid = $('#masonry_grid').masonry({
     itemSelector: '.item',
     columnWidth: 200
   });
 
   $('#load-images').click( function() {
     var $items = getItems();
-    $container.masonryImagesReveal( $items );
+    $masonry_grid.masonryImagesReveal( $items );
   });
 
 });
@@ -51,7 +51,7 @@ $.fn.masonryImagesReveal = function( $items ) {
   var itemSelector = msnry.options.itemSelector;
   // hide by default
   $items.hide();
-  // append to container
+  // append to masonry_grid
   this.append( $items );
   $items.imagesLoaded().progress( function( imgLoad, image ) {
     // get item
@@ -78,6 +78,7 @@ function getItem(i) {
 
 function getItems() {
   var items = '';
+  var flag;
   for ( var i=0; i < image_url.length; i++ ) {
     items += getItem(i);
   }
