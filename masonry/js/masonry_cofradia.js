@@ -6,7 +6,8 @@ function setting(directory_path) {
 
 var setting = new setting('Abrigos');
 
-var dir = 'http://localhost/web/project/img/'+setting.directory_path+'/';
+//var dir = '../../web-system/img/'+setting.directory_path+'/';
+var dir = '../../web-system/img/'+setting.directory_path+'/';
 
 var fileextension = ".jpg";
 
@@ -35,7 +36,7 @@ console.log(image_url);
 $( function() {
 
   var $masonry_grid = $('#masonry_grid').masonry({
-    itemSelector: '.item',
+    itemSelector: '.grid-item',
     columnWidth: 200
   });
 
@@ -71,7 +72,7 @@ function randomInt( min, max ) {
 }
 
 function getItem(i) {
-  var item = '<div class="item">' +image_url[i]+ '</div>';
+    var item = '<div class="grid-item">' +image_url[i]+ '</div>';
     console.log(item);
   return item;
 }
