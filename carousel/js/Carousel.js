@@ -96,7 +96,7 @@ $(document).ready(function() {
     }
 
     var slides_to_create;
-    var setting = new setting('Compus');
+    var setting = new setting('Vinilos');
 
     var dir = 'http://localhost/web/project/img/'+setting.directory_path+'/';
     var fileextension = ".jpg";
