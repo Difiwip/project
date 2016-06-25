@@ -6,7 +6,8 @@ function setting(directory_path) {
 
 var setting = new setting('Abrigos');
 
-var dir = 'http://localhost/web/project/img/'+setting.directory_path+'/';
+//var dir = '../../web-system/img/'+setting.directory_path+'/';
+var dir = '../../web-system/img/'+setting.directory_path+'/';
 
 var fileextension = ".jpg";
 
